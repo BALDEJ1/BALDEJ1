@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+node_modules/
+.DS_Store
+# rendered files: only the picture shown on the profile is kept
+out/*
+!out/earth-color.svg

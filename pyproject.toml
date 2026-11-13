@@ -1,0 +1,16 @@
+[project]
+name = "ascii-profile"
+version = "0.1.0"
+description = "Programmatically generated ASCII animations for a GitHub profile README"
+requires-python = ">=3.11"
+dependencies = ["numpy>=2.0", "pillow>=10.0"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.black]
+line-length = 120
