@@ -28,7 +28,7 @@ from __future__ import annotations
 
 import gzip
 from collections.abc import Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import NamedTuple
 
@@ -107,6 +107,10 @@ class Style:
 
     def size(self, rows: int, cols: int) -> tuple[float, float]:
         return 2 * self.pad + cols * self.cell_w, 2 * self.pad + rows * self.cell_h
+
+    def as_wide_as(self, cols: int, reference_cols: int = 100) -> Style:
+        """Smaller characters, so a `cols`-wide grid shows exactly as wide as a `reference_cols`-wide one."""
+        return replace(self, scale=self.scale * self.size(1, reference_cols)[0] / self.size(1, cols)[0])
 
     def baseline(self, row: int) -> float:
         return self.pad + row * self.cell_h + 0.5 * self.cell_h + 0.3 * self.font_size
@@ -349,7 +353,7 @@ def encode_svg(
 
     # Each frame stays visible FRAME_OVERLAP_S past the next one's start. Without it, rounding in the
     # written times leaves microsecond gaps, and Firefox sometimes paints in one: a blank flash.
-    shown = 100.0 * (1.0 / n + FRAME_OVERLAP_S / loop)
+    shown = min(100.0, 100.0 * (1.0 / n + FRAME_OVERLAP_S / loop))  # a lone frame simply stays
     css = [
         f"text{{font-family:{FONT_STACK};font-size:{_num(style.font_size)}px;white-space:pre}}",
         f".fr{{visibility:hidden;animation:fr {loop:.6f}s step-end infinite}}",

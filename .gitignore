@@ -4,6 +4,8 @@ __pycache__/
 .ruff_cache/
 node_modules/
 .DS_Store
-# rendered files: only the picture shown on the profile is kept
+# rendered files: only the pictures shown on the profile are kept
 out/*
+!out/counters.svg
 !out/earth-color.svg
+!out/blackhole-color.svg

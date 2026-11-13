@@ -241,7 +241,7 @@ class Cells(NamedTuple):
 class Earth(SceneBase):
     title = "ASCII Earth"
     rows, cols = ROWS, COLS
-    style = replace(BASE_STYLE, scale=BASE_STYLE.scale * BASE_STYLE.size(1, 100)[0] / BASE_STYLE.size(1, COLS)[0])
+    style = BASE_STYLE.as_wide_as(COLS)
     # (smaller characters: the picture keeps the on-screen width of a 100-column scene, about 749 px)
     frames, fps = 108, 12.0
     max_colors = 24
