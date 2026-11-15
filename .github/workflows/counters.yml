@@ -1,10 +1,10 @@
-# Redraws out/counters.svg (profile views and followers) every 6 hours and commits it if the numbers
+# Redraws out/counters.svg (profile views and followers) every 2 hours and commits it if the numbers
 # changed. Commits are made by the GitHub Actions bot, not by the profile owner.
 name: counters
 
 on:
   schedule:
-    - cron: "17 */6 * * *"   # an off-peak minute: runs at :00 are the most often delayed
+    - cron: "17 */2 * * *"   # an off-peak minute: runs at :00 are the most often delayed
   workflow_dispatch:
 
 permissions:

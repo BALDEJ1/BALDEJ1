@@ -6,7 +6,7 @@
 Followers come from the GitHub API. Views come from a public visit counter: the README loads the
 counter's image once per profile visit (that is the count) and this script reads the number without
 adding one. When a number cannot be fetched, the last drawn one is kept, so a broken service never
-blanks the profile. A GitHub Actions job (.github/workflows/counters.yml) runs this every 6 hours.
+blanks the profile. A GitHub Actions job (.github/workflows/counters.yml) runs this every 2 hours.
 """
 from __future__ import annotations
 
